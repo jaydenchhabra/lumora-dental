@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumora Dental</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6fbff;
+      color: #123044;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1160px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(246, 251, 255, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(18, 48, 68, 0.08);
+    }
+
+    .top-bar {
+      background: #123044;
+      color: #dff8fb;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .top-bar .container {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      color: #0f5e73;
+      font-size: 1.08rem;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #2ec4b6, #7bdff2);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(46, 196, 182, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      color: #52697a;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: #0f5e73;
+    }
+
+    .nav-btn,
+    .btn-primary,
+    .mini-btn {
+      display: inline-block;
+      border-radius: 999px;
+      background: #0f8fa3;
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 14px 28px rgba(15, 143, 163, 0.22);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 82px 0 0;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(123, 223, 242, 0.42), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #edf9fd 100%);
+      border-bottom: 1px solid rgba(18, 48, 68, 0.08);
+    }
+
+    .hero-inner {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      background: #e9fbf8;
+      color: #0f6f68;
+      border: 1px solid rgba(46, 196, 182, 0.22);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ec4b6;
+    }
+
+    h1 {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 720px;
+      font-size: clamp(3rem, 6.5vw, 5.35rem);
+      line-height: 0.96;
+      letter-spacing: -3.5px;
+      margin-bottom: 24px;
+      color: #123044;
+    }
+
+    .accent-text {
+      color: #0f8fa3;
+    }
+
+    .hero-copy {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 640px;
+      color: #52697a;
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid rgba(15, 143, 163, 0.24);
+      background: white;
+      color: #0f6f83;
+      box-shadow: 0 12px 24px rgba(18, 48, 68, 0.07);
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .quick-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: white;
+      border: 1px solid rgba(18, 48, 68, 0.08);
+      box-shadow: 0 16px 32px rgba(18, 48, 68, 0.06);
+    }
+
+    .quick-stat strong {
+      display: block;
+      color: #0f8fa3;
+      font-size: 1.18rem;
+    }
+
+    .quick-stat span {
+      color: #52697a;
+      font-size: 0.9rem;
+    }
+
+    .appointment-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 56px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: white;
+      border: 1px solid rgba(18, 48, 68, 0.08);
+      box-shadow: 0 30px 70px rgba(18, 48, 68, 0.13);
+      transform: translateY(44px);
+    }
+
+    .hero-visual {
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 26% 22%, rgba(255, 209, 102, 0.72), transparent 24%),
+        radial-gradient(circle at 74% 26%, rgba(123, 223, 242, 0.72), transparent 25%),
+        linear-gradient(135deg, #e9fbf8, #dff5ff);
+    }
+
+    .tooth {
+      width: 148px;
+      height: 172px;
+      border-radius: 48% 48% 44% 44%;
+      background: white;
+      position: relative;
+      box-shadow: 0 24px 50px rgba(18, 48, 68, 0.14);
+    }
+
+    .tooth::before,
+    .tooth::after {
+      content: "";
+      position: absolute;
+      bottom: -22px;
+      width: 58px;
+      height: 68px;
+      background: white;
+      border-radius: 0 0 34px 34px;
+    }
+
+    .tooth::before {
+      left: 18px;
+      transform: rotate(8deg);
+    }
+
+    .tooth::after {
+      right: 18px;
+      transform: rotate(-8deg);
+    }
+
+    .booking-panel {
+      padding: 34px;
+      display: grid;
+      align-content: center;
+    }
+
+    .booking-panel h2 {
+      font-size: 2.15rem;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .booking-panel p {
+      color: #52697a;
+      margin-bottom: 20px;
+    }
+
+    .booking-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .field {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f3fbfe;
+      border: 1px solid rgba(15, 143, 163, 0.13);
+      color: #52697a;
+      font-weight: 700;
+    }
+
+    .schedule {
+      display: grid;
+      gap: 10px;
+    }
+
+    .schedule-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: #f3fbfe;
+      border: 1px solid rgba(15, 143, 163, 0.12);
+    }
+
+    .schedule-row strong {
+      color: #123044;
+    }
+
+    .schedule-row span {
+      color: #52697a;
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    .after-hero {
+      padding-top: 128px;
+    }
+
+    .section-label {
+      color: #0f8fa3;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+      color: #123044;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      color: #52697a;
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+    }
+
+    .reviews-grid,
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .services-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .service-card,
+    .review-card,
+    .info-card,
+    .contact-panel {
+      padding: 28px;
+      border-radius: 24px;
+      background: white;
+      border: 1px solid rgba(18, 48, 68, 0.08);
+      box-shadow: 0 16px 36px rgba(18, 48, 68, 0.07);
+    }
+
+    .service-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 0;
+      background: #e9fbf8;
+      color: #0f8f83;
+      font-weight: 900;
+    }
+
+    .service-card:nth-child(2) .service-icon {
+      background: #fff5d8;
+      color: #a36b00;
+    }
+
+    .service-card:nth-child(3) .service-icon {
+      background: #e8f6ff;
+      color: #0f6f9a;
+    }
+
+    .service-card h3,
+    .review-card h3,
+    .info-card h3,
+    .contact-panel h3 {
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+      color: #123044;
+    }
+
+    .service-card h3 {
+      margin-bottom: 4px;
+    }
+
+    .service-tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3fbfe;
+      color: #0f6f83;
+      font-size: 0.86rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .service-card p,
+    .review-card p,
+    .info-card p,
+    .contact-panel p {
+      color: #52697a;
+    }
+
+    .soft-band {
+      background: #edf9fd;
+      border-top: 1px solid rgba(18, 48, 68, 0.06);
+      border-bottom: 1px solid rgba(18, 48, 68, 0.06);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .feature-panel {
+      min-height: 320px;
+      padding: 32px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #0f8fa3, #2ec4b6);
+      color: white;
+      box-shadow: 0 24px 50px rgba(15, 143, 163, 0.22);
+    }
+
+    .feature-panel .section-label,
+    .feature-panel h2,
+    .feature-panel p {
+      color: white;
+    }
+
+    .feature-panel p {
+      opacity: 0.88;
+      margin-bottom: 24px;
+    }
+
+    .feature-panel .mini-btn {
+      background: white;
+      color: #0f6f83;
+      box-shadow: none;
+      padding: 13px 20px;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .check-list li {
+      padding: 16px 18px;
+      border-radius: 16px;
+      color: #123044;
+      background: white;
+      border: 1px solid rgba(18, 48, 68, 0.08);
+      box-shadow: 0 12px 28px rgba(18, 48, 68, 0.06);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: white;
+      border: 1px solid rgba(18, 48, 68, 0.08);
+      box-shadow: 0 12px 28px rgba(18, 48, 68, 0.06);
+      font-weight: 800;
+      color: #0f6f83;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      color: #6c7f8f;
+      border-top: 1px solid rgba(18, 48, 68, 0.08);
+      background: white;
+    }
+
+    @media (max-width: 900px) {
+      .appointment-strip,
+      .split,
+      .contact-grid,
+      .reviews-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 14px 0;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 18px;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 54px 0 0;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 14vw, 3.35rem);
+        line-height: 1;
+      }
+
+      .buttons,
+      .quick-stats {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .top-bar .container {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .top-bar span:last-child {
+        display: none;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .appointment-strip,
+      .service-card,
+      .review-card,
+      .info-card,
+      .contact-panel,
+      .feature-panel {
+        border-radius: 20px;
+      }
+
+      .booking-panel,
+      .service-card,
+      .review-card,
+      .info-card,
+      .contact-panel,
+      .feature-panel {
+        padding: 24px;
+      }
+
+      .booking-fields,
+      .service-card {
+        grid-template-columns: 1fr;
+      }
+
+      .service-tag {
+        justify-self: start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <span>Open Monday-Friday in Denver</span>
+      <span>Call (303) 555-0198 for same-week availability</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#">
+          <span class="logo-mark">B</span>
+          Lumora Dental
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#patients">Patients</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a class="nav-btn" href="#contact">Book Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="badge">
+            <span></span>
+            Family dental care in Denver
+          </div>
+
+          <h1>
+            Calm, modern dental care for
+            <span class="accent-text">brighter smiles.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Lumora Dental helps patients feel comfortable from the first call
+            to the final polish, with friendly care, easy scheduling, and clear
+            treatment options for the whole family.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#contact">Request Appointment</a>
+            <a class="btn btn-secondary" href="#services">Explore Services</a>
+          </div>
+
+          <div class="quick-stats">
+            <div class="quick-stat">
+              <strong>4.9/5</strong>
+              <span>Patient rating</span>
+            </div>
+            <div class="quick-stat">
+              <strong>Same week</strong>
+              <span>Visits available</span>
+            </div>
+            <div class="quick-stat">
+              <strong>Denver</strong>
+              <span>Local care team</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appointment-strip">
+          <div class="hero-visual">
+            <div class="tooth"></div>
+          </div>
+
+          <div class="booking-panel">
+            <h2>Plan your first visit.</h2>
+            <p>
+              A real dental site can use this area for a short booking form,
+              service selector, or scheduling widget.
+            </p>
+
+            <div class="booking-fields">
+              <div class="field">Choose service</div>
+              <div class="field">Preferred day</div>
+              <div class="field">New patient?</div>
+              <div class="field">Phone number</div>
+            </div>
+
+            <a class="btn btn-primary" href="#contact">Request Appointment</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="after-hero">
+      <div class="container">
+        <div class="section-label">Services</div>
+        <h2>Dental services made easy to understand.</h2>
+        <p class="section-intro">
+          This demo shows how a local business can present its most important
+          services clearly, so visitors can quickly decide what they need.
+        </p>
+
+        <div class="services-list">
+          <div class="service-card">
+            <div class="service-icon">01</div>
+            <div>
+              <h3>Preventive Care</h3>
+              <p>Cleanings, exams, X-rays, and simple checkups for healthy smiles.</p>
+            </div>
+            <span class="service-tag">Most booked</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">02</div>
+            <div>
+              <h3>Cosmetic Dentistry</h3>
+              <p>Whitening and smile upgrades presented in a calm, polished layout.</p>
+            </div>
+            <span class="service-tag">Smile upgrades</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">03</div>
+            <div>
+              <h3>Emergency Visits</h3>
+              <p>Clear urgent-care messaging so patients know how to get help fast.</p>
+            </div>
+            <span class="service-tag">Call today</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="patients" class="soft-band">
+      <div class="container split">
+        <div class="feature-panel">
+          <div class="section-label">New Patients</div>
+          <h2>Designed to lower stress before the first visit.</h2>
+          <p>
+            A dental site should make people feel safe, informed, and ready to
+            book. This section gives new patients the practical details they need.
+          </p>
+          <a class="mini-btn" href="#contact">Start Booking</a>
+        </div>
+
+        <ul class="check-list">
+          <li>New patient forms can be added before the first appointment.</li>
+          <li>Insurance and payment details are easy to find.</li>
+          <li>Appointment buttons stay visible throughout the page.</li>
+          <li>The whole layout is built to work well on phones.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-label">Helpful Details</div>
+        <h2>Important questions answered before someone calls.</h2>
+        <p class="section-intro">
+          Local business sites work better when they remove friction. This kind
+          of section helps visitors understand location, payment, and scheduling.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Insurance Friendly</h3>
+            <p>Simple space for accepted insurance plans and payment options.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Convenient Location</h3>
+            <p>Clear local positioning for patients searching near Denver.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Easy Scheduling</h3>
+            <p>Strong booking buttons guide visitors toward the next step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="soft-band">
+      <div class="container">
+        <div class="section-label">Reviews</div>
+        <h2>Trust signals for patients comparing options.</h2>
+        <p class="section-intro">
+          Testimonial-style cards give local businesses a place to show real
+          proof once they have reviews to feature.
+        </p>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <h3>"Friendly and easy."</h3>
+            <p>The team made scheduling simple and explained every step clearly.</p>
+          </div>
+
+          <div class="review-card">
+            <h3>"Great with families."</h3>
+            <p>A calm visit, clear pricing, and a clean office experience.</p>
+          </div>
+
+          <div class="review-card">
+            <h3>"Modern and comfortable."</h3>
+            <p>The site makes it easy to understand services and request a visit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-label">Contact</div>
+        <h2>Ready for a healthier smile?</h2>
+
+        <div class="contact-grid">
+          <div class="contact-panel">
+            <h3>Request an appointment</h3>
+            <p>
+              This demo keeps the next step obvious with simple contact actions.
+              A real version could connect to a booking form or scheduling tool.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="contact-link" href="tel:3035550198">(303) 555-0198</a>
+            <a class="contact-link" href="mailto:hello@lumoradental.example">hello@lumoradental.example</a>
+            <a class="contact-link" href="index.html#work">Back to Jayden Web Design</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Lumora Dental. Demo website concept by Jayden Web Design.
+  </footer>
+</body>
+</html>
